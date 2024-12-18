@@ -1,6 +1,8 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
+import notFound from './middlewares/notFound';
 import router from './routes';
+import sendResponse from './utils/sendResponse';
 
 const app: Application = express();
 
@@ -13,11 +15,17 @@ app.use('/api', router);
 
 // Health Check
 app.get('/', (req: Request, res: Response) => {
-  res.send('🚀 Server is Running ✅');
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: '🚀 Server is Running ✅',
+    data: null,
+  });
 });
 
 // Global error handler
 
 // Not Found handler
+app.use(notFound);
 
 export default app;
