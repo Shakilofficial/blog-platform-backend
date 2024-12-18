@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
+import router from './routes';
 
 const app: Application = express();
 
@@ -8,7 +9,7 @@ app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'] }));
 app.use(express.json());
 
 // Routes
-// app.use('/api', router);
+app.use('/api', router);
 
 // Health Check
 app.get('/', (req: Request, res: Response) => {
