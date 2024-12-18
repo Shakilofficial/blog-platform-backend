@@ -1,0 +1,22 @@
+{
+  "name": "blog-platform-backend",
+  "version": "1.0.0",
+  "description": "Backend for a blogging platform with user roles, authentication, and CRUD operations for blogs. Built with Node.js, Express, MongoDB, and TypeScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog",
+    "platform",
+    "backend",
+    "node",
+    "express",
+    "mongoose",
+    "mongodb",
+    "noSQL",
+    "typescript"
+  ],
+  "author": "Md. Shakil Hossain",
+  "license": "MIT"
+}
