@@ -49,6 +49,7 @@ const deleteBlog = async (id: string, userId: string) => {
   const result = await Blog.findByIdAndDelete(id);
   return result;
 };
+
 const getSingleBlog = async (id: string) => {
   const blog = await Blog.findById(id);
 
@@ -60,9 +61,15 @@ const getSingleBlog = async (id: string) => {
   return result;
 };
 
+const getAllBlogs = async () => {
+  const result = await Blog.find().populate('author');
+  return result;
+};
+
 export const blogServices = {
   createBlog,
   updateBlog,
   deleteBlog,
   getSingleBlog,
+  getAllBlogs,
 };

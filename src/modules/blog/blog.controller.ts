@@ -44,6 +44,7 @@ const deleteBlog = catchAsync(async (req, res) => {
 
 const getSingleBlog = catchAsync(async (req, res) => {
   const id = req.params.id;
+
   const result = await blogServices.getSingleBlog(id);
   sendResponse(res, {
     statusCode: StatusCodes.OK,
@@ -53,9 +54,20 @@ const getSingleBlog = catchAsync(async (req, res) => {
   });
 });
 
+const getAllBlogs = catchAsync(async (req, res) => {
+  const result = await blogServices.getAllBlogs();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Blogs retrieved successfully',
+    data: result,
+  });
+});
+
 export const blogControllers = {
   createBlog,
   updateBlog,
   deleteBlog,
   getSingleBlog,
+  getAllBlogs,
 };
