@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Model } from 'mongoose';
 
 export interface IUSer {
@@ -8,5 +9,5 @@ export interface IUSer {
   isBlocked: boolean;
 }
 export interface UserModel extends Model<IUSer, UserModel> {
-  isUserExist(): Promise<IUSer | null>;
+  isUserExist(_id: string): Promise<IUSer | null>;
 }

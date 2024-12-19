@@ -1,4 +1,6 @@
+import bcrypt from 'bcrypt';
 import { model, Schema } from 'mongoose';
+import config from '../../config';
 import { IUSer, UserModel } from './user.interface';
 
 const userSchema = new Schema<IUSer, UserModel>(
@@ -20,7 +22,8 @@ const userSchema = new Schema<IUSer, UserModel>(
       type: String,
       required: [true, 'Password is required'],
       minlength: [8, 'Password must be at least 8 characters long'],
-      maxlength: [30, 'Password must be at most 30 characters long'],
+      maxlength: [20, 'Password must be at most 20 characters long'],
+      select: false,
     },
     role: {
       type: String,
@@ -37,5 +40,19 @@ const userSchema = new Schema<IUSer, UserModel>(
   },
   { timestamps: true },
 );
+// Hash password before saving to database
+userSchema.pre('save', async function (next) {
+  const user = this as IUSer;
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(config.bcrypt_salt_rounds),
+  );
+  next();
+});
+
+//set '' after saving password
+userSchema.post('save', function (doc) {
+  doc.password = '';
+});
 
 export const User = model<IUSer, UserModel>('User', userSchema);
