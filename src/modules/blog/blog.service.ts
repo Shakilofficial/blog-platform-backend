@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../helpers/errors/AppError';
-import { searchableFields } from './blog.constant';
 import { IBlog } from './blog.interface';
 import { Blog } from './blog.model';
+import { blogSearchableFields } from './blog.constant';
 
 const createBlog = async (payload: IBlog) => {
   const result = (await Blog.create(payload)).populate('author');
@@ -66,7 +66,7 @@ const getSingleBlog = async (id: string) => {
 
 const getAllBlogs = async (query: Record<string, unknown>) => {
   const blogs = new QueryBuilder(Blog.find().populate('author'), query)
-    .search(searchableFields)
+    .search(blogSearchableFields)
     .filter()
     .paginate()
     .sort()
