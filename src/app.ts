@@ -19,7 +19,7 @@ app.get('/', (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: '🚀 Server is Running ✅',
+    message: '🚀 Blog Server is Running ✅',
     data: null,
   });
 });
