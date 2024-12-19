@@ -49,9 +49,20 @@ const deleteBlog = async (id: string, userId: string) => {
   const result = await Blog.findByIdAndDelete(id);
   return result;
 };
+const getSingleBlog = async (id: string) => {
+  const blog = await Blog.findById(id);
+
+  // Check if blog exists
+  if (!blog) {
+    throw new AppError(StatusCodes.NOT_FOUND, 'Blog not found');
+  }
+  const result = blog.populate('author');
+  return result;
+};
 
 export const blogServices = {
   createBlog,
   updateBlog,
   deleteBlog,
+  getSingleBlog,
 };
