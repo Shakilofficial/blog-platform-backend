@@ -28,6 +28,6 @@ const deleteBlog = catchAsync(async (req, res) => {
 });
 
 export const adminControllers = {
-    blockUser,
-    deleteBlog,
+  blockUser,
+  deleteBlog,
 };
