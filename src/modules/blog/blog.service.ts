@@ -14,9 +14,11 @@ const updateBlog = async (
   payload: Partial<IBlog>,
 ) => {
   const blog = await Blog.findById(id);
+  // Check if blog exists
   if (!blog) {
     throw new AppError(StatusCodes.NOT_FOUND, 'Blog not found');
   }
+  // Check if user is the author of the blog
   if (blog.author.toString() !== userId) {
     throw new AppError(
       StatusCodes.UNAUTHORIZED,
@@ -30,7 +32,26 @@ const updateBlog = async (
   return result;
 };
 
+const deleteBlog = async (id: string, userId: string) => {
+  const blog = await Blog.findById(id);
+  // Check if blog exists
+  if (!blog) {
+    throw new AppError(StatusCodes.NOT_FOUND, 'Blog not found');
+  }
+  // Check if user is the author of the blog
+  if (blog.author.toString() !== userId) {
+    throw new AppError(
+      StatusCodes.UNAUTHORIZED,
+      'You can not delete this blog',
+    );
+  }
+
+  const result = await Blog.findByIdAndDelete(id);
+  return result;
+};
+
 export const blogServices = {
   createBlog,
   updateBlog,
+  deleteBlog,
 };

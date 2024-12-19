@@ -4,7 +4,7 @@ type TResponse<T> = {
   statusCode: number;
   success: boolean;
   message?: string;
-  data: T | T[] | null;
+  data?: T | T[] | null;
 };
 
 const sendResponse = <T>(
@@ -16,7 +16,6 @@ const sendResponse = <T>(
       success: success || false,
       message: message || 'No Data Found',
       statusCode: statusCode || 404,
-      data: [],
     });
   }
 
