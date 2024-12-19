@@ -26,4 +26,14 @@ const blogSchema = new Schema<IBlog, BlogModel>(
   { timestamps: true },
 );
 
+// Exclude __v field before returning user data to client
+blogSchema.pre('find', function () {
+  this.select('-__v');
+});
+
+// Exclude __v field for findOne,
+blogSchema.pre('findOne', function () {
+  this.select('-__v');
+});
+
 export const Blog = model<IBlog, BlogModel>('Blog', blogSchema);

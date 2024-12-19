@@ -55,5 +55,14 @@ userSchema.post('save', function (doc) {
   doc.password = '';
 });
 
+// Exclude __v field before returning user data to client
+userSchema.pre('find', function () {
+  this.select('-__v');
+});
+
+// Exclude __v field for findOne,
+userSchema.pre('findOne', function () {
+  this.select('-__v');
+});
 
 export const User = model<IUSer, UserModel>('User', userSchema);
