@@ -253,8 +253,7 @@ Success (200):
       "name": "John Doe",
       "email": "john@example.com",
       "role": "user"
-    },
-    ...
+    }
   ]
 }
 ```
@@ -331,8 +330,7 @@ Success (200):
       "author": "author_id",
       "isPublished": true,
       "createdAt": "2021-10-01T00:00:00.000Z"
-    },
-    ...
+    }
   ]
 }
 ```
