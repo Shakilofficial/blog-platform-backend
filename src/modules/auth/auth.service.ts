@@ -29,6 +29,7 @@ const login = async (payload: ILoginUser) => {
   }
   //create token and send it to the client
   const jwtPayload = {
+    id: user?._id,
     email: user?.email,
     role: user?.role,
   };
