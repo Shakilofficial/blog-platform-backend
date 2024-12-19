@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import mongoose, { Model } from 'mongoose';
 
 export interface IBlog {
@@ -7,5 +8,5 @@ export interface IBlog {
   isPublished: boolean;
 }
 export interface BlogModel extends Model<IBlog, BlogModel> {
-  isBlogExist(): Promise<IBlog | null>;
+  isBlogExist(id: string): Promise<IBlog | null>;
 }

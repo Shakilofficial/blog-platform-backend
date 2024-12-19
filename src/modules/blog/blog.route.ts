@@ -1,10 +1,10 @@
-import express from 'express';
+import { Router } from 'express';
 import auth from '../../middlewares/auth';
 import validateRequest from '../../middlewares/validateRequest';
 import { blogControllers } from './blog.controller';
 import { blogValidations } from './blog.validation';
 
-const router = express.Router();
+const router = Router();
 
 router.post(
   '/',

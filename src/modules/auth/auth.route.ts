@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 import validateRequest from '../../middlewares/validateRequest';
 import { authControllers } from './auth.controller';
 import { authValidations } from './auth.validation';
 
-const router = express.Router();
+const router = Router();
 
 router.post(
   '/register',

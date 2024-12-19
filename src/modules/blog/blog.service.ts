@@ -27,10 +27,12 @@ const updateBlog = async (
       'You can not update this blog',
     );
   }
+
   const result = await Blog.findByIdAndUpdate(id, payload, {
     new: true,
     runValidators: true,
   }).populate('author');
+
   return result;
 };
 
@@ -48,8 +50,7 @@ const deleteBlog = async (id: string, userId: string) => {
     );
   }
 
-  const result = await Blog.findByIdAndDelete(id);
-  return result;
+  await blog.deleteOne();
 };
 
 const getSingleBlog = async (id: string) => {

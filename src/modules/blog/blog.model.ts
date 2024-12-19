@@ -35,5 +35,9 @@ blogSchema.pre('find', function () {
 blogSchema.pre('findOne', function () {
   this.select('-__v');
 });
+blogSchema.statics.isBlogExist = async function (id: string) {
+  const blog = await this.findById(id);
+  return blog;
+};
 
 export const Blog = model<IBlog, BlogModel>('Blog', blogSchema);
