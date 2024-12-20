@@ -1,7 +1,5 @@
 ![Blog Project](https://res.cloudinary.com/dcyupktj6/image/upload/v1734650573/dd0z865lkiguyuwtbzsc.jpg)
 
-## Description
-
 **Blog Platform Backend** is a robust backend service designed for a blogging platform that supports multiple user roles, user authentication, and the management of blog posts. Built with **Node.js**, **Express**, **MongoDB**, and **TypeScript**, this project provides a powerful API for managing users, blogs, and administrative functions with full CRUD capabilities. The backend is structured for scalability, efficiency, and security.
 
 Key features include user registration, login, role-based access control (admin and user roles), and blog post management. It also implements **Zod** for data validation and robust error handling, ensuring seamless operation and a clean user experience.
