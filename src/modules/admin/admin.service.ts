@@ -3,6 +3,8 @@ import AppError from '../../helpers/errors/AppError';
 import { Blog } from '../blog/blog.model';
 import { User } from '../user/user.model';
 
+// Admin services for handling admin-related operations
+// Block user service for blocking a user
 const blockUser = async (userId: string, adminId: string) => {
   //check if the requester is an admin
   const admin = await User.findById(adminId);
@@ -18,7 +20,7 @@ const blockUser = async (userId: string, adminId: string) => {
   if (user.isBlocked) {
     throw new AppError(StatusCodes.UNAUTHORIZED, 'User is already blocked');
   }
-  // block the user
+  // block the user by setting isBlocked to true
   const result = await User.findByIdAndUpdate(
     userId,
     { isBlocked: true },
@@ -27,6 +29,7 @@ const blockUser = async (userId: string, adminId: string) => {
   return result;
 };
 
+//Delete blog service for deleting a blog
 const deleteBlog = async (id: string, adminId: string) => {
   //check if the requester is an admin
   const admin = await User.findById(adminId);
@@ -38,6 +41,7 @@ const deleteBlog = async (id: string, adminId: string) => {
   if (!blog) {
     throw new AppError(StatusCodes.NOT_FOUND, 'Blog not found');
   }
+  // delete the blog directly
   await blog.deleteOne();
 };
 

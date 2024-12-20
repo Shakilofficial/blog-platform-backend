@@ -1,6 +1,7 @@
 import mongoose, { model, Schema } from 'mongoose';
 import { BlogModel, IBlog } from './blog.interface';
 
+// Define blog schema
 const blogSchema = new Schema<IBlog, BlogModel>(
   {
     title: {
@@ -15,12 +16,12 @@ const blogSchema = new Schema<IBlog, BlogModel>(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'User', // Reference to User model
       required: [true, 'Author is required'],
     },
     isPublished: {
       type: Boolean,
-      default: true,
+      default: true, // Default value for isPublished is true
     },
   },
   { timestamps: true },
@@ -35,6 +36,8 @@ blogSchema.pre('find', function () {
 blogSchema.pre('findOne', function () {
   this.select('-__v');
 });
+
+// static method to check if a blog exists
 blogSchema.statics.isBlogExist = async function (id: string) {
   const blog = await this.findById(id);
   return blog;

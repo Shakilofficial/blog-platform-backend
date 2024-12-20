@@ -6,25 +6,27 @@ import { userRoutes } from '../modules/user/user.route';
 
 const router = Router();
 
+// Routes for handling module-related operations
 const moduleRoutes = [
   {
     path: '/auth',
-    route: authRoutes,
+    route: authRoutes, // Route for handling authentication-related operations
   },
   {
     path: '/admin',
-    route: adminRoutes,
+    route: adminRoutes, // Route for handling admin-related operations
   },
   {
     path: '/blogs',
-    route: blogRoutes,
+    route: blogRoutes, // Route for handling blog-related operations
   },
   {
     path: '/users',
-    route: userRoutes,
+    route: userRoutes, // Route for handling user-related operations
   },
 ];
 
+// Add routes to the router
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 
 export default router;

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 
+// Function to create a JWT token
 export const createToken = (
   jwtPayload: { email: string; role: string },
   secret: string,

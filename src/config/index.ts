@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
-
+// Load environment variables from .env file
 dotenv.config({ path: path.join(process.cwd(), '.env') });
-
+// Export environment variables
 export default {
   port: process.env.PORT || 5000,
   NODE_ENV: process.env.NODE_ENV,

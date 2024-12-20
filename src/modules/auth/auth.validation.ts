@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+// Validation schemas for register and login operations
+// Register validation schema for registering a new user
 const registerValidationSchema = z.object({
   body: z.object({
     name: z.string({
@@ -18,6 +20,7 @@ const registerValidationSchema = z.object({
   }),
 });
 
+// Login validation schema for logging in a registered user
 const loginValidationSchema = z.object({
   body: z.object({
     email: z

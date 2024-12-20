@@ -4,7 +4,6 @@
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
 import config from '../config';
-
 import AppError from '../helpers/errors/AppError';
 import handleCastError from '../helpers/errors/handleCastError';
 import handleDuplicateError from '../helpers/errors/handleDuplicateError';
@@ -12,7 +11,9 @@ import handleValidationError from '../helpers/errors/handleValidationError';
 import handleZodError from '../helpers/errors/handleZodError';
 import { TErrorSources } from '../types/error';
 
+  // Global error handler
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  // Set default values for status code, message and errorSources
   let statusCode = 500;
   let message = 'Internal Server Error 💥';
   let errorSources: TErrorSources = [
@@ -42,7 +43,8 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     success: false,
     message,
     errorSources,
-    ...(config.NODE_ENV === 'development' && { stack: err.stack }),
+    //Send stack trace only in development environment
+    ...(config.NODE_ENV === 'development' && { stack: err.stack }), 
   });
 };
 
