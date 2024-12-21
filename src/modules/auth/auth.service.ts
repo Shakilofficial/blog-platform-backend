@@ -9,14 +9,14 @@ import { ILoginUser } from './auth.interface';
 
 // Auth services for handling authentication-related operations
 
-  // Register service for registering a new user
+// Register service for registering a new user
 const register = async (payload: IUSer) => {
   //craete a new user with the provided payload
   const result = await User.create(payload);
   return result;
 };
 
-  // Login service for logging in a user
+// Login service for logging in a user
 const login = async (payload: ILoginUser) => {
   //check if the email exists in the database
   const user = await User.findOne({ email: payload.email }).select('+password');

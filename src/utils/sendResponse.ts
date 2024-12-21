@@ -15,7 +15,6 @@ const sendResponse = <T>(
   res: Response,
   { statusCode, success, message = '', data }: TResponse<T>,
 ) => {
-  
   // Check if data is empty or null and return response with status code and message
   if (!data || (Array.isArray(data) && data.length === 0)) {
     return res.status(statusCode).json({

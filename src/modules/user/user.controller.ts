@@ -5,13 +5,13 @@ import { userServices } from './user.service';
 
 // User controllers for handling user-related operations
 
-  // Get single user controller for retrieving a single user
+// Get single user controller for retrieving a single user
 const getSingleUser = catchAsync(async (req, res) => {
   // Get id from request params
   const { id } = req.params;
   // Get single user with the provided id
   const result = await userServices.getSingleUser(id);
-// Send response with the single user data
+  // Send response with the single user data
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,

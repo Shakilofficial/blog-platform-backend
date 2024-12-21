@@ -5,7 +5,7 @@ import sendResponse from '../../utils/sendResponse';
 import { blogServices } from './blog.service';
 
 // Blog controllers for handling blog-related operations
-  // Create blog controller for creating a new blog
+// Create blog controller for creating a new blog
 const createBlog = catchAsync(async (req, res) => {
   // Get userId from user object
   const userId = req.user?.id as JwtPayload;
@@ -57,7 +57,7 @@ const deleteBlog = catchAsync(async (req, res) => {
 const getSingleBlog = catchAsync(async (req, res) => {
   // Get id from request params
   const id = req.params.id;
-// Get single blog with the provided id
+  // Get single blog with the provided id
   const result = await blogServices.getSingleBlog(id);
   // Send response with the single blog data
   sendResponse(res, {

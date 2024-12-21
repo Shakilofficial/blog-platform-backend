@@ -7,14 +7,14 @@ import { blogSearchableFields } from './blog.constant';
 
 // Blog services for handling blog-related operations
 
-  // Create blog service for creating a new blog
+// Create blog service for creating a new blog
 const createBlog = async (payload: IBlog) => {
   // Create the blog with the provided payload and populate the author field
   const result = (await Blog.create(payload)).populate('author');
   return result;
 };
 
-  // Update blog service for updating a blog
+// Update blog service for updating a blog
 const updateBlog = async (
   id: string,
   userId: string,
@@ -42,7 +42,7 @@ const updateBlog = async (
   return result;
 };
 
-  // Delete blog service for deleting a blog
+// Delete blog service for deleting a blog
 const deleteBlog = async (id: string, userId: string) => {
   // Get the blog with the provided id
   const blog = await Blog.findById(id);
@@ -61,8 +61,7 @@ const deleteBlog = async (id: string, userId: string) => {
   await blog.deleteOne();
 };
 
-
-  // Get single blog service for retrieving a single blog
+// Get single blog service for retrieving a single blog
 const getSingleBlog = async (id: string) => {
   // Get the blog with the provided id
   const blog = await Blog.findById(id);
@@ -76,7 +75,7 @@ const getSingleBlog = async (id: string) => {
   return result;
 };
 
-// Get all blogs service for retrieving all blogs 
+// Get all blogs service for retrieving all blogs
 const getAllBlogs = async (query: Record<string, unknown>) => {
   // Create a new query builder with the Blog model and query object and populate the author field
   const blogs = new QueryBuilder(Blog.find().populate('author'), query)

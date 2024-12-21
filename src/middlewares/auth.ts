@@ -9,8 +9,9 @@ import catchAsync from '../utils/catchAsync';
 // Auth middleware for checking user role and permissions
 const auth = (...roles: TUserRole[]) =>
   catchAsync(async (req, res, next) => {
-    // Get token from request headers
-    const token = req.headers.authorization;
+    // Get token from request headers and remove Bearer from the token string if present using split
+    const token = req.headers.authorization?.split(' ')[1];
+
     // Check if token is present
     if (!token) {
       throw new AppError(

@@ -11,7 +11,7 @@ import handleValidationError from '../helpers/errors/handleValidationError';
 import handleZodError from '../helpers/errors/handleZodError';
 import { TErrorSources } from '../types/error';
 
-  // Global error handler
+// Global error handler
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   // Set default values for status code, message and errorSources
   let statusCode = 500;
@@ -44,7 +44,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     message,
     errorSources,
     //Send stack trace only in development environment
-    ...(config.NODE_ENV === 'development' && { stack: err.stack }), 
+    ...(config.NODE_ENV === 'development' && { stack: err.stack }),
   });
 };
 

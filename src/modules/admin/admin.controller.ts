@@ -4,7 +4,7 @@ import sendResponse from '../../utils/sendResponse';
 import { adminServices } from './admin.service';
 
 // Admin controllers for handling admin-related operations
-// Block user controller for blocking a user 
+// Block user controller for blocking a user
 const blockUser = catchAsync(async (req, res) => {
   // Get userId from request params and adminId from user object
   const { userId } = req.params;
@@ -18,7 +18,7 @@ const blockUser = catchAsync(async (req, res) => {
   });
 });
 
-  //Delete blog controller for deleting a blog
+//Delete blog controller for deleting a blog
 const deleteBlog = catchAsync(async (req, res) => {
   // Get id from request params and adminId from user object
   const { id } = req.params;

@@ -5,7 +5,7 @@ import { authValidations } from './auth.validation';
 
 const router = Router();
 
-// Register route for registering a new user 
+// Register route for registering a new user
 router.post(
   '/register',
   validateRequest(authValidations.registerValidationSchema),

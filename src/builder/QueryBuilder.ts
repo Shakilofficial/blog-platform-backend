@@ -9,7 +9,7 @@ class QueryBuilder<T> {
     this.modelQuery = modelQuery;
     this.query = query;
   }
-  // Apllies search query based on searchable fields 
+  // Apllies search query based on searchable fields
 
   search(searchableFields: string[]) {
     const search = this?.query?.search;
@@ -28,7 +28,7 @@ class QueryBuilder<T> {
     return this;
   }
 
-  // Applies filter query parameters,exlcuding reserved fields 
+  // Applies filter query parameters,exlcuding reserved fields
 
   filter() {
     // Copy query object by spreading
@@ -85,7 +85,7 @@ class QueryBuilder<T> {
     return this;
   }
 
-  // Applies fields query parameter 
+  // Applies fields query parameter
   fields() {
     // Get fields from query object and split it by comma
     const fields = (this.query?.fields as string)?.split(',').join(' ') || '';

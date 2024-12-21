@@ -1,6 +1,6 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 // Catch Async Middleware for handling async/await functions
-  
+
 // Define the type for the catchAsync function
 const catchAsync = (func: RequestHandler) => {
   return (req: Request, res: Response, next: NextFunction) => {

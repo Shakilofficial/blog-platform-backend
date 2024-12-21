@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { TErrorResponse } from '../../types/error';
-  // Function to handle validation error
+// Function to handle validation error
 const handleValidationError = (
   err: mongoose.Error.ValidationError,
 ): TErrorResponse => ({
